@@ -35,7 +35,7 @@ def predict_image_class(img_path):
     # Implement your own logic for decoding predictions based on your model's output
     # Example: Get the class with the highest probability
     decoded_predictions = np.argmax(predictions, axis=1)
-    print(decoded_predictions)
+    # print(decoded_predictions)
     result_dic={0:"Benign",1:"Early",2:"Pre",3:"Pro"}
 
     return result_dic[decoded_predictions[0]]  # Replace this with your own logic
@@ -51,16 +51,16 @@ def classifier():
         return render_template('classifier.html', 'No file part')
 
     file = request.files['file']
-    print(file.filename)
+    # print(file.filename)
     if file.filename == '':
         return render_template('classifier.html','No selected file')
 
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
-        print(filename)
+        # print(filename)
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(filepath)
-        print(filepath)
+        # print(filepath)
         prediction = predict_image_class(filepath)
 
         return redirect(url_for('result', filename=filename, prediction=prediction))
