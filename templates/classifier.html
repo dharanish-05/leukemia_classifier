@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Classifier</title>
+    <style>*{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins',sans-serif;
+    }
+    .header{
+        width: 100%;
+        height: 100vh;
+        background-image: linear-gradient(rgba(229, 12, 12, 0.5),rgba(5,0,136,0.5)),url(static/img1.jpeg);
+        background-position: center;
+        background-size: cover;
+        overflow-x: hidden;
+    }
+    
+    nav{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 18px 8%;
+        transition: background 1s;
+    }
+    
+    nav .logo{
+        display: flex;
+        align-items: center;
+        font-size: 26px;
+        font-weight: 600;
+        color: #FFF;
+    }
+    
+    
+    nav ul li{
+        display: inline-block;
+        list-style: none;
+        margin: 10px 20px;
+        
+    }
+    
+    nav ul li a{
+        text-decoration: none;
+        color: #FFF;
+        font-weight: 800;
+    }
+    nav:hover{
+        background: #fff;
+    }
+    
+    nav:hover .logo{
+        color: #333;
+    }
+    
+    nav:hover ul li a{
+        color: #333;
+    }
+
+    .container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    }
+
+    h1 {
+        color: #000000;
+        margin-bottom: 20px;
+    }
+
+    .upload-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .file-label {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .file-input {
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        padding: 10px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .file-info {
+        font-size: 14px;
+        color: #000000;
+    }
+
+    .upload-button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 12px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .upload-button:hover {
+        background-color: #0056b3;
+}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <nav>
+            <div class="logo">
+                <span>Medi-Buddy</span>
+            </div>
+            <ul>
+                <li><a href="/">HOME</a></li>
+                <li><a href="/templates/join_page">TEAM-INFO</a></li>
+                <li><a href="/classifier">CLASSIFY</a></li>
+            </ul>
+        </nav>
+        <div class="container">
+            <h1>Image Classifier</h1>
+            <form action="/upload" method="post" enctype="multipart/form-data" class="upload-form">
+                <label for="file" class="file-label">Choose an image:</label>
+                <input type="file" name="file" id="file" class="file-input" accept=".png, .jpg, .jpeg, .gif" required>
+                <small class="file-info">Accepted formats: PNG, JPG, JPEG, GIF</small>
+                <br>
+                <button type="submit" class="upload-button">Upload and Classify</button>
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>

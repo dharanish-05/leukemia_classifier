@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leukemia Classifier</title>
+    <style>*{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins',sans-serif;
+    }
+    .header{
+        width: 100%;
+        height: 100vh;
+        background-image: linear-gradient(rgba(229, 12, 12, 0.5),rgba(5,0,136,0.5)),url(static/img1.jpeg);
+        background-position: center;
+        background-size: cover;
+        overflow-x: hidden;
+    }
+    
+    nav{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 18px 8%;
+        transition: background 1s;
+    }
+    
+    nav .logo{
+        display: flex;
+        align-items: center;
+        font-size: 26px;
+        font-weight: 600;
+        color: #FFF;
+    }
+    
+    
+    nav ul li{
+        display: inline-block;
+        list-style: none;
+        margin: 10px 20px;
+        
+    }
+    
+    nav ul li a{
+        text-decoration: none;
+        color: #FFF;
+        font-weight: 800;
+    }
+    nav:hover{
+        background: #fff;
+    }
+    
+    nav:hover .logo{
+        color: #333;
+    }
+    
+    nav:hover ul li a{
+        color: #333;
+    }
+    
+    .content{
+        text-align: center;
+        margin-left: 9%;
+        margin-right: 9%;
+        color: #FFF;
+    
+    
+    }
+    
+    .content h1{
+        font-size: 50PX;
+        font-weight: 600;
+        line-height: 140px;
+    }
+    
+    .content h3{
+        text-align: left;
+        font-weight: 600;
+        line-height: 80px;
+    }
+
+    .content p{
+        
+        line-height: 28px;
+        opacity: 0;
+    }
+
+    .leukemia-info {
+        text-align: left;
+        line-height: 80px;
+
+    }
+    .project-aim {
+        text-align: left;
+        line-height: 80px;
+
+    }
+    
+    .links{
+        margin-top: 30px;
+        opacity: 0;
+    }
+    .links a{
+        color: #FFF;
+        display: inline-block;
+        text-decoration: none;
+    
+    }
+        .links a:hover{
+        color: rgb(144, 0, 255);
+
+    }
+    .btn:hover{
+        background-color: rgb(248, 254, 253);
+    }
+    .btn{
+        border: 2px solid #fff;
+        padding: 10px 35px;
+        border-radius: 30px;
+        margin-right: 15px;
+        font-weight: 700;
+    }
+    
+    .slide-left{
+        animation: slideleft 1s linear forwards;
+        
+    }
+    
+    
+    @keyframes slideleft{
+        0%{
+            transform: translate(100px);
+            opacity: 0;
+        }
+        100%{
+            transform: translate(0px);
+            opacity: 1;
+        }
+        
+    }
+    
+    p.slide-left{
+        animation-delay: 1s;
+    }
+    .links.slide-left{
+        animation-delay: 2s;
+        color:blue;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <nav>
+            <div class="logo">
+                <span>Medi-Buddy</span>
+            </div>
+            <ul>
+                <li><a href="/">HOME</a></li>
+                <li><a href="/templates/join_page">TEAM-INFO</a></li>
+                <li><a href="/classifier">CLASSIFY</a></li>
+            </ul>
+        </nav>
+        <div class="content">
+            <div class="slide-left">
+
+                <h1>LEUKEMIA</h1>
+                <p  class="slide-left" id="first">Leukemia is a type of cancer that affects the blood and bone marrow, where blood cells are produced. It involves the overproduction of abnormal white blood cells, which are the body's primary defense against infection. These abnormal cells crowd out healthy blood cells, leading to various complications.</p>
+                <div class="leukemia-info">
+                    <h3>Types of Leukemia</h3>
+                    <p  class="slide-left" id="second">Leukemia is broadly categorized into four main types based on its progression and the type of blood cell affected: acute lymphoblastic leukemia (ALL), chronic lymphocytic leukemia (CLL), acute myeloid leukemia (AML), and chronic myeloid leukemia (CML).</p>
+                </div>
+                <div class="leukemia-info">
+                    <h4>Acute Lymphoblastic Leukemia (ALL)</h4>
+                    <p class="slide-left">ALL is a rapidly progressing cancer of the white blood cells, commonly affecting children.
+                        It involves the overproduction of immature lymphoblasts.
+                        Symptoms include fatigue, fever, easy bruising or bleeding, bone pain, and frequent infections.
+                        Treatment typically involves chemotherapy, targeted therapy, and sometimes stem cell transplantation.</p>
+                </div>
+
+                <div class="leukemia-info">
+                    <h4>Chronic Lymphocytic Leukemia (CLL)</h4>
+                    <p class="slide-left">CLL is a slow-growing cancer that affects B lymphocytes, commonly found in older adults.
+                        It progresses slowly, and some patients may not require immediate treatment.
+                        Symptoms include enlarged lymph nodes, fatigue, fever, night sweats, and weight loss.
+                        Treatment options include chemotherapy, targeted therapy, and immunotherapy.</p>
+                </div>
+
+                <div class="leukemia-info">
+                    <h4>Acute Myeloid Leukemia (AML)</h4>
+                    <p class="slide-left">AML is a rapidly progressing cancer of the myeloid line of blood cells, affecting adults more often than children.
+                        It involves the overproduction of immature myeloid cells.
+                        Symptoms include fatigue, fever, easy bruising or bleeding, and bone pain.
+                        Treatment involves chemotherapy, targeted therapy, and sometimes stem cell transplantation.</p>
+                </div>
+
+                <div class="leukemia-info">
+                    <h4>Chronic Myeloid Leukemia (CML)</h4>
+                    <p class="slide-left">CML is a slow-growing cancer that affects the myeloid line of blood cells, typically diagnosed in adults.
+                        It progresses through chronic, accelerated, and blast crisis phases.
+                        Symptoms include fatigue, abdominal discomfort, weight loss, fever, and night sweats.
+                        Treatment often involves targeted therapy with tyrosine kinase inhibitors (TKIs) and, in some cases, stem cell transplantation.</p>
+                </div>
+
+                <div class="project-aim">
+                    <h3>Project Outcome</h3>
+                    <p class="slide-left">This project can help to find out whether a person is having leukemia or not when the cell image is passed it gives out one of the 4 outcomes <b>Beningn , Early , Pre , Pro.</b>
+                    "Benign" typically refers to cells or tumors that are not cancerous,"Early"  class likely refers to early-stage leukemia. Early-stage leukemia indicates that the disease has been detected in its initial phases. 
+                    At this stage, it may not have progressed significantly and might still be localized,"Pre" class may include samples that show some abnormalities or changes indicating a predisposition to developing leukemia but have not yet progressed
+                     to full-blown leukemia, "Pro" class likely represents samples that are indicative of fully developed or progressive leukemia.</p>
+                </div>
+            </div>
+
+            <div class="links slide-left">
+                <a href="/classifier" class="btn">TEST</a>
+            </div>
+    </div>
+
+    
+    
+</body>
+</html>
