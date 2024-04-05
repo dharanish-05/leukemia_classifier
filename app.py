@@ -6,17 +6,17 @@ import tensorflow as tf
 import cv2
 from flask import Flask, request, render_template,redirect,url_for  
 from werkzeug.utils import secure_filename
-import statistics as st
+from groq import Groq
 
 
 app = Flask(__name__)
 
 
-UPLOAD_FOLDER = './static/uploaded_images'
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+UPLOAD_FOLDER = './static/uploaded_images' #input file storage path
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'} #allowed file formats
 
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-CUSTOM_MODEL_PATH = './leukemia_model/leukemia_model2.h5'  # Update with your actual model path
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER 
+CUSTOM_MODEL_PATH = './leukemia_model/leukemia_model2.h5'  # trained and saved model path
 
 def allowed_file(filename):
     filename=filename.split('.')
@@ -38,14 +38,14 @@ def predict_image_class(img_path):
     print(decoded_predictions)
     result_dic={0:"Benign",1:"Early",2:"Pre",3:"Pro"}
 
-    return result_dic[decoded_predictions[0]]  # Replace this with your own logic
+    return result_dic[decoded_predictions[0]]  
 
 @app.route("/")
 def home():
     return render_template("index1.html")
     
     
-@app.route('/upload', methods = ['GET', 'POST'])
+@app.route('/upload', methods = ['GET', 'POST']) #logic for image file handling
 def classifier():
     if 'file' not in request.files:
         return render_template('classifier.html', 'No file part')
@@ -78,6 +78,37 @@ def result():
     prediction = request.args.get('prediction')
 
     return render_template('result.html', filename=filename, prediction=prediction)
+
+@app.route('/chat_with_llm', methods = ['GET', 'POST'])
+def chat():
+    return render_template("llm_process.html")
+
+@app.route('/process_text', methods=['POST'])
+def process_text():
+    user_input = request.form['user_input']
+    client = Groq(api_key="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")
+    completion = client.chat.completions.create(
+        model="mixtral-8x7b-32768",
+       messages=[
+        {
+            "role": "system",
+            "content": "you are trained ai medical assistant.You are only used to solve querries of the user regarding the leukemia cancer and its causes, preventions or any related information.you are not allowed to respond to any other topic"
+        },
+        {
+            "role": "user",
+            "content": user_input
+        }
+    ],
+    temperature=0.5,
+    max_tokens=256,
+    top_p=1,
+    stream=False,
+    stop=None,
+    )
+
+    answer = completion.choices[0].message.content
+    return render_template('llm_process.html', user_input=user_input, answer=answer)
+
 
 
 @app.route('/templates/join_page', methods = ['GET', 'POST'])
