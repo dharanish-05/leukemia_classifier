@@ -66,32 +66,39 @@
     max-width: 600px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
     text-align: center;
     }
 
     h1 {
-        color: #333;
+        color: #000000;
         margin-bottom: 20px;
     }
 
-    .result-text {
+    .upload-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .text-label {
         font-size: 18px;
         margin-bottom: 10px;
     }
 
-    .filename {
-        font-weight: bold;
-        color: #007bff;
+    .user_text {
+        border: 1px solid #ccc;
+        padding: 10px 10px; 
+        font-size: 16px; 
+        width: 500px;
+        border-radius: 20px;
+        margin: 10px auto;
     }
 
-    .prediction {
-        font-weight: bold;
-        color: #28a745;
-    }
 
+
+    
     .upload-button {
         background-color: #007bff;
         color: #fff;
@@ -99,6 +106,7 @@
         border-radius: 4px;
         padding: 12px 20px;
         font-size: 16px;
+        margin: 20px auto;
         cursor: pointer;
         transition: background-color 0.3s ease;
     }
@@ -106,6 +114,31 @@
     .upload-button:hover {
         background-color: #0056b3;
     }
+
+    .result-text {
+        font-size: 18px;
+        margin-bottom: 10px;
+        text-align: left;
+    }
+
+    h4{
+        text-align: left;
+    }
+
+    .llm_text{
+        text-align: center;
+        margin: 20px auto;
+        padding: 10px;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        background-color: #FFF;
+        width: 500px;
+        
+    }
+
+
+    
+    
     </style>
 </head>
 <body>
@@ -121,17 +154,22 @@
             </ul>
         </nav>
         <div class="container">
-            <h1>Result</h1>
-        
-            {% if filename %}
-                <p class="result-text">Uploaded file: <span class="filename">{{ filename }}</span></p>
-            {% endif %}
-        
-            {% if prediction %}
-                <p class="result-text">Stage prediction: <span class="prediction">{{ prediction }}</span></p>
-            {% endif %}
-
-            <button onclick="location.href='/chat_with_llm'" class="upload-button">Consult</button>
+            <h1>Chat with our bot</h1>
+            <form action="/process_text" method="post" class="upload-form">
+                <label for="user_input" class="text-label">Enter your Queries Regarding Leukemia here:</label><br>
+                <input type="text" name="user_input" id="user_input" class="user_text">
+                <button type="submit" class="upload-button">Submit</button>
+            </form>
+            <div class="llm_text">
+                {% if user_input %}
+                <h4>Your Input:</h4> 
+                <p class="result-text">{{ user_input }}</p>
+                {% endif %}
+                {% if answer %}
+                <h4>Answer:</h4> 
+                <p class="result-text">{{ answer }}</p>
+                {% endif %}
+            </div>
         </div>
     </div>
 
